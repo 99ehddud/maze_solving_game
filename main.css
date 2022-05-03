@@ -2,3 +2,24 @@
 
 
 /* Selectors */
+body {
+    margin: 0;
+}
+
+header {
+    margin: 0;
+    background-color: rgb(196, 118, 236);
+}
+
+header > p {
+    margin: 0;
+}
+
+main {
+    margin: 0;
+}
+
+footer {
+    margin: 0;
+    background-color: rgb(196, 118, 236);
+}
