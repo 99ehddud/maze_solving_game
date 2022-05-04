@@ -7,7 +7,11 @@ body {
 }
 
 header {
+    box-sizing: border-box;
     margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: rgb(196, 118, 236);
 }
 
@@ -16,7 +20,15 @@ header > p {
 }
 
 main {
+    box-sizing: border-box;
     margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#playbox {
+    box-sizing: border-box;
 }
 
 footer {
