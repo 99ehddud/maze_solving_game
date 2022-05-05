@@ -12,6 +12,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+    border-bottom: 1px solid black;
     background-color: rgb(196, 118, 236);
 }
 
@@ -27,11 +28,26 @@ main {
     align-items: center;
 }
 
-#playbox {
+#mainbox {
     box-sizing: border-box;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+}
+
+#menubar {
+    background-color: skyblue;
+}
+
+#play {
+    background-color: bisque;
+}
+
+#status {
+    background-color: khaki;
 }
 
 footer {
     margin: 0;
+    border-top: 1px solid black;
     background-color: rgb(196, 118, 236);
 }
