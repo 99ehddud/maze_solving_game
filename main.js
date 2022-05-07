@@ -16,15 +16,21 @@ function adjust_size() {
     mainbox.style.width = (screen.width * 0.6) + 'px';
     mainbox.style.height = (x_tap_status_height * 0.85) + 'px';
     menubar.style.width = (screen.width * 0.6) + 'px';
-    menubar.style.height = (mainbox.offsetHeight * 0.1) + 'px';
+    menubar.style.height = (mainbox.offsetHeight * 0.15) + 'px';
     play.style.width = (screen.width * 0.6) + 'px';
     play.style.height = (mainbox.offsetHeight * 0.7) + 'px';
     status.style.width = (screen.width * 0.6) + 'px';
-    status.style.height = (mainbox.offsetHeight * 0.2) + 'px';
+    status.style.height = (mainbox.offsetHeight * 0.15) + 'px';
     footer.style.width = screen.width + 'px';
     footer.style.height = (x_tap_status_height * 0.05) + 'px';
+}
 
+function pause() {
 
+}
+
+function restart() {
+    
 }
 
 // Prevent to scroll when user push arrow key

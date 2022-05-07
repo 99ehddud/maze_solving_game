@@ -17,13 +17,15 @@
     <main>
         <div id="mainbox">
             <div id="menubar">
-
+                <button type="button" id="pause" onclick="pause()">PAUSE</button>
+                <button type="button" id="restart" onclick="restart()">RESTART</button>
             </div>
             <div id="play">
 
             </div>
             <div id="status">
-
+                <label for="move" style="font-size: 1.2rem; width: 16rem; height: 3rem;">MOVE : <input type="text" id="move" readonly></label>
+                <label for="time" style="font-size: 1.2rem; width: 16rem; height: 3rem;">TIME : <input type="text" id="time" readonly></label>
             </div>
         </div>
     </main>
