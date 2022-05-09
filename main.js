@@ -1,29 +1,17 @@
 let count = 0;
 
 let isStart = false;
+let isOver = false;
 
-function adjust_size() {
-    const header = document.querySelector('header');
-    const main = document.querySelector('main');
-    const mainbox = document.querySelector('#mainbox');
-    const menubar = document.querySelector('#menubar');
-    const play = document.querySelector('#play');
-    const status = document.querySelector('#status');
-
-    const x_tap_status_height = screen.height - (window.outerHeight - window.innerHeight);
-
-    header.style.width = screen.width + 'px';
-    header.style.height = (x_tap_status_height * 0.1) + 'px';
-    // main.style.width = screen.width + 'px';
-    // main.style.height = (x_tap_status_height * 0.85) + 'px';
-    mainbox.style.width = (screen.width * 0.6) + 'px';
-    mainbox.style.height = (x_tap_status_height * 0.9) + 'px';
-    menubar.style.width = (screen.width * 0.6) + 'px';
-    menubar.style.height = (mainbox.offsetHeight * 0.15) + 'px';
-    play.style.width = (screen.width * 0.6) + 'px';
-    play.style.height = (mainbox.offsetHeight * 0.7) + 'px';
-    status.style.width = (screen.width * 0.6) + 'px';
-    status.style.height = (mainbox.offsetHeight * 0.15) + 'px';
+function resize_margin() {
+    if (window.innerHeight >= 700) {
+        isOver = true;
+    } else {
+        isOver = false;
+    }
+    if (isOver) {
+        document.querySelector('#mainbox').style.margin = (window.innerHeight - 700) / 2 + 'px auto';
+    }
 }
 
 const time = document.querySelector('#time');

@@ -10,10 +10,6 @@
 </head>
 
 <body>
-    <header>
-        <p>Maze Solving</p>
-    </header>
-
     <main>
         <div id="mainbox">
             <div id="menubar">
@@ -35,10 +31,10 @@
     </main>
 
     <script>
-        adjust_size();
-        // window.onresize = function () {
-        //     adjust_size();
-        // }
+        resize_margin();
+        window.onresize = function() {
+            resize_margin();
+        }
     </script>
 </body>
 
