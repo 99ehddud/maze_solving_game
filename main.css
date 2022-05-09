@@ -23,9 +23,6 @@ header > p {
 main {
     box-sizing: border-box;
     margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 #mainbox {
@@ -49,6 +46,16 @@ main {
 #play {
     box-sizing: border-box;
     border: 1px solid black;
+}
+
+#play > table {
+    border-collapse: collapse;
+}
+
+td {
+    border: 1px solid black;
+    width: 20px;
+    height: 20px;
 }
 
 #status {

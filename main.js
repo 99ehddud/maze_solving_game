@@ -64,7 +64,11 @@ function timer() {
 }
 
 function make_maze() {
+    make_board();
+}
 
+function make_board() {
+    
 }
 
 function move() {
@@ -73,3 +77,5 @@ function move() {
 }
 
 // Prevent to scroll when user push arrow key
+// Full-screen mode O -> screen
+// Full-Screen mode X -> window
