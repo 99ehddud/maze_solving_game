@@ -22,6 +22,7 @@ function start() {
     count = 0, hour = 0, minute = 0, second = 0;
     isStart = true;
     document.querySelector('#start').style.visibility = 'hidden';
+    resize_margin();
     make_maze();
     
     elapse_time = setInterval(timer, 1000);
@@ -51,11 +52,26 @@ function timer() {
     if (hour < 10) hour = Number(hour);
 }
 
-function make_maze() {
-    make_board();
+function make_board() {
+    let table = document.createElement('table');
+    table.id = 'maze';
+    let tr, td;
+    for (let i = 0; i < 15; i++) {
+        tr = document.createElement('tr');
+        for (let j = 0; j < 30; j++) {
+            td = document.createElement('td');
+            td.id = 'cell_' + (15 - i) + '_' + (j + 1);
+            tr.appendChild(td);
+        }
+        table.appendChild(tr);
+        document.querySelector('#play').appendChild(table);
+    }
+    document.querySelector('#maze').style.margin = (500 - document.querySelector('#maze').offsetHeight) / 2 + 'px auto';
+    return "";
 }
 
-function make_board() {
+function make_maze() {
+    make_board();
     
 }
 

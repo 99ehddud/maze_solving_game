@@ -44,14 +44,29 @@ main {
     background-color: rgb(180, 180, 180);
 }
 
-#play > table {
+#maze {
     border-collapse: collapse;
 }
 
-td {
-    border: 1px solid black;
-    width: 20px;
-    height: 20px;
+#maze > tr:first-child > td:not(:last-child) {
+    border-top: 2px solid black;
+}
+
+#maze > tr:last-child > td:not(:first-child) {
+    border-bottom: 2px solid black;
+}
+
+#maze > tr > td:first-child {
+    border-left: 2px solid black;
+}
+
+#maze > tr > td:last-child {
+    border-right: 2px solid black;
+}
+
+#maze > tr > td {
+    width: 23px;
+    height: 23px;
 }
 
 #status {
