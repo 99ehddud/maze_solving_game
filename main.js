@@ -70,9 +70,45 @@ function make_board() {
     return "";
 }
 
+let record = [];
+let current = {};
+let set;
+let isDuplicate;
+let whereToGo = 0;
+let c = 1;
+let r = 1;
+let isFirst = true;
+let isGoal = false;
+let tmp = 0;
 function make_maze() {
     make_board();
-    
+    isFirst = true;
+
+    while (!isGoal) {
+        if (!isFirst) {
+            whereToGo = Math.floor(Math.random() * 4);
+            switch (whereToGo) {
+                case 0:
+                    if (r < 30) r++;
+                    break;
+                case 1:
+                    if (r > 1) r--;
+                    break;
+                case 2:
+                    if (c < 15) c++;
+                    break;
+                case 3:
+                    if (c > 1) c--;
+                    break;
+            }
+        }
+        current[0] = c;
+        current[1] = r;
+        record.push(current);
+        document.querySelector('#cell_' + r + '_' + c).style.border = '1px solid black';
+        if (isFirst) isFirst = false;
+        if (c == 15 && r == 30) isGoal = true;
+    }
 }
 
 function move() {
