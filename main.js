@@ -72,7 +72,6 @@ function make_board() {
 
 let record = [];
 let current = {};
-let set;
 let isDuplicate;
 let whereToGo = 0;
 let c = 1;
@@ -89,23 +88,34 @@ function make_maze() {
             whereToGo = Math.floor(Math.random() * 4);
             switch (whereToGo) {
                 case 0:
-                    if (r < 30) r++;
+                    if (r < 30) {
+                        r++;
+                    }
                     break;
                 case 1:
-                    if (r > 1) r--;
+                    if (r > 1) {
+                        r--;
+                    }
                     break;
                 case 2:
-                    if (c < 15) c++;
+                    if (c < 15) {
+                        c++;
+                    }
                     break;
                 case 3:
-                    if (c > 1) c--;
+                    if (c > 1) {
+                        c--;
+                    }
                     break;
             }
         }
         current[0] = c;
         current[1] = r;
-        record.push(current);
-        document.querySelector('#cell_' + r + '_' + c).style.border = '1px solid black';
+        if (record.indexOf(current) == -1) {
+            record.push(current);
+            document.querySelector('#cell_' + r + '_' + c).style.border = '1px solid black';
+        }
+        
         if (isFirst) isFirst = false;
         if (c == 15 && r == 30) isGoal = true;
     }
