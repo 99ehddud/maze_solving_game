@@ -70,15 +70,19 @@ function make_board() {
     return "";
 }
 
-let record = [];
-let current = {};
-let isDuplicate;
+let c_record = [];
+let r_record = [];
+
+let c_current = 0;
+let r_current = 0;
 let whereToGo = 0;
 let c = 1;
 let r = 1;
+let num = 0;
+
 let isFirst = true;
 let isGoal = false;
-let tmp = 0;
+
 function make_maze() {
     make_board();
     isFirst = true;
@@ -109,11 +113,36 @@ function make_maze() {
                     break;
             }
         }
-        current[0] = c;
-        current[1] = r;
-        if (record.indexOf(current) == -1) {
-            record.push(current);
+        c_current = c;
+        r_current = r;
+        if (c_record.indexOf(c_current) == -1 || r_record.indexOf(r_current) == -1) {
+            c_record.push(c_current);
+            r_record.push(r_current);
             document.querySelector('#cell_' + r + '_' + c).style.border = '1px solid black';
+            num++;
+        } else {
+            switch (whereToGo) {
+                case 0:
+                    if (r <= 30) {
+                        r--;
+                    }
+                    break;
+                case 1:
+                    if (r >= 1) {
+                        r++;
+                    }
+                    break;
+                case 2:
+                    if (c <= 15) {
+                        c--;
+                    }
+                    break;
+                case 3:
+                    if (c >= 1) {
+                        c++;
+                    }
+                    break;
+            }
         }
         
         if (isFirst) isFirst = false;
@@ -127,5 +156,3 @@ function move() {
 }
 
 // Prevent to scroll when user push arrow key
-// Full-screen mode O -> screen
-// Full-Screen mode X -> window
