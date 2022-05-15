@@ -73,11 +73,64 @@ function make_board() {
 let isFirst = true;
 let isGoal = false;
 
+let c_before = 0;
+let c_current = 1;
+let r_before = 1;
+let r_current = 1;
+
+let whereToGo = 0;
+
+let isColUp = false;
+let isColDown = false;
+let isRowUp = false;
+let isRowDown = false;
+
+function initialization() {
+    isColUp = false;
+    isColDown = false;
+    isRowUp = false;
+    isRowDown = false;
+}
+
 function make_maze() {
     make_board();
     
+    isFirst = true;
+
+    while (!isGoal) {
+        if (r_before == r_current) {
+            if (c_before == (c_current  + 1)) {
+                isColUp = true;
+            } else if (c_before == (c_current - 1)) {
+                isColDown = true;
+            }
+        } else if (c_before == c_current) {
+            if (r_before == (r_current + 1)) {
+                isRowUp = true;
+            } else if (r_before == (r_current - 1)) {
+                isRowDown = true;
+            }
+        }
+
+        if(!isFirst) {
+            if (isColUp) {
+                
+            } else if (isColDown) {
+
+            } else if (isRowUp) {
+
+            } else if (isRowDown) {
+
+            }
+        } else {
+            document.querySelector('#cell_' + c_current + '_' + r_current).style.border = '1px solid black';
+        }
+
+        initialization();
+
         if (isFirst) isFirst = false;
         if (c == 15 && r == 30) isGoal = true;
+    }
 }
 
 function move() {
