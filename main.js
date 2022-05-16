@@ -61,6 +61,7 @@ function make_board() {
         for (let j = 0; j < 30; j++) {
             td = document.createElement('td');
             td.id = 'cell_' + (15 - i) + '_' + (j + 1);
+            td.className = 'uncheck';
             tr.appendChild(td);
         }
         table.appendChild(tr);
@@ -79,17 +80,18 @@ let r_before = 1;
 let r_current = 1;
 
 let whereToGo = 0;
+let numberOfRandom = 0;
 
-let isColUp = false;
-let isColDown = false;
-let isRowUp = false;
-let isRowDown = false;
+let isColBeforeUp = false;
+let isColBeforeDown = false;
+let isRowBeforeRight = false;
+let isRowBeforeLeft = false;
 
 function initialization() {
-    isColUp = false;
-    isColDown = false;
-    isRowUp = false;
-    isRowDown = false;
+    isColBeforeUp = false;
+    isColBeforeDown = false;
+    isRowBeforeRight = false;
+    isRowBeforeLeft = false;
 }
 
 function make_maze() {
@@ -100,36 +102,128 @@ function make_maze() {
     while (!isGoal) {
         if (r_before == r_current) {
             if (c_before == (c_current  + 1)) {
-                isColUp = true;
+                isColBeforeUp = true;
             } else if (c_before == (c_current - 1)) {
-                isColDown = true;
+                isColBeforeDown = true;
             }
         } else if (c_before == c_current) {
             if (r_before == (r_current + 1)) {
-                isRowUp = true;
+                isRowBeforeRight = true;
             } else if (r_before == (r_current - 1)) {
-                isRowDown = true;
+                isRowBeforeLeft = true;
             }
         }
 
         if(!isFirst) {
-            if (isColUp) {
-                
-            } else if (isColDown) {
+            if (isColBeforeUp) {
+                if (c_current > 1) {
+                    numberOfRandom = 3;
+                } else {
+                    numberOfRandom = 2;
+                }
 
-            } else if (isRowUp) {
+                whereToGo = Math.floor(Math.random() * numberOfRandom);
 
-            } else if (isRowDown) {
+                switch (whereToGo) {
+                    case 0 :
+                        r_before = r_current;
+                        r_current--;
+                        break;
+                    
+                    case 1 :
+                        r_before = r_current;
+                        r_current++;
+                        break;
 
+                    case 2 :
+                        c_before = c_current;
+                        c_current--;
+                        break;
+                }
+            } else if (isColBeforeDown) {
+                if (c_current < 30) {
+                    numberOfRandom = 3;
+                } else {
+                    numberOfRandom = 2;
+                }
+
+                whereToGo = Math.floor(Math.random() * numberOfRandom);
+
+                switch (whereToGo) {
+                    case 0:
+                        r_before = r_current;
+                        r_current--;
+                        break;
+
+                    case 1:
+                        r_before = r_current;
+                        r_current++;
+                        break;
+
+                    case 2:
+                        c_before = c_current;
+                        c_current++;
+                        break;
+                }
+            } else if (isRowBeforeRight) {
+                if (r_current > 1) {
+                    numberOfRandom = 3;
+                } else {
+                    numberOfRandom = 2;
+                }
+
+                whereToGo = Math.floor(Math.random() * numberOfRandom);
+
+                switch (whereToGo) {
+                    case 0 :
+                        c_before = c_current;
+                        c_current++;
+                        break;
+
+                    case 1 :
+                        c_before = c_current;
+                        c_current--;
+                        break;
+
+                    case 2 :
+                        r_before = r_current;
+                        r_current--;
+                        break
+                }
+            } else if (isRowBeforeLeft) {
+                if(r_current < 30) {
+                    numberOfRandom = 3;
+                } else {
+                    numberOfRandom = 2;
+                }
+
+                whereToGo = Math.floor(Math.random() * numberOfRandom);
+
+                switch (whereToGo) {
+                    case 0:
+                        c_before = c_current;
+                        c_current++;
+                        break;
+
+                    case 1:
+                        c_before = c_current;
+                        c_current--;
+                        break;
+
+                    case 2:
+                        r_before = r_current;
+                        r_current++;
+                        break
+                }
             }
-        } else {
-            document.querySelector('#cell_' + c_current + '_' + r_current).style.border = '1px solid black';
-        }
+        } 
+        
+        document.querySelector('#cell_' + c_current + '_' + r_current).className = 'check';
 
         initialization();
 
         if (isFirst) isFirst = false;
-        if (c == 15 && r == 30) isGoal = true;
+        if (c_current == 15 && r_current == 30) isGoal = true;
     }
 }
 

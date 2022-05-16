@@ -69,6 +69,10 @@ main {
     height: 23px;
 }
 
+.check {
+    border: 1px solid black;
+}
+
 #status {
     display: flex;
     justify-content: space-evenly;
