@@ -82,6 +82,7 @@ let r_current = 1;
 let whereToGo = 0;
 let numberOfRandom = 0;
 
+let isNotSide = false;
 let isColBeforeUp = false;
 let isColBeforeDown = false;
 let isRowBeforeRight = false;
@@ -117,25 +118,39 @@ function make_maze() {
         if(!isFirst) {
             if (isColBeforeUp) {
                 if (c_current > 1) {
-                    numberOfRandom = 3;
-                } else {
-                    numberOfRandom = 2;
+                    if (1 < r_current && r_current < 30) { // Left, Right, Down
+                        numberOfRandom = 3;
+                        whereToGo = Math.floor(Math.random() * numberOfRandom);
+                    } else if (r_current == 1) { // Right, Down
+                        numberOfRandom = 2;
+                        whereToGo = Math.floor(Math.random() * numberOfRandom) + 1;
+                    } else { // r_current == 30, Left, Down
+                        numberOfRandom = 2;
+                        whereToGo = Math.floor(Math.random() * numberOfRandom) * 2;
+                    }
+                } else { // c_current == 1, Down X
+                    if (1 < r_current && r_current < 30) { // Left, Right
+                        numberOfRandom = 2;
+                        whereToGo = Math.floor(Math.random() * numberOfRandom);
+                    } else if (r_current == 1) { // Right
+                        whereToGo = 1;
+                    } else { // r_current == 30, Left
+                        whereToGo = 0;
+                    }
                 }
 
-                whereToGo = Math.floor(Math.random() * numberOfRandom);
-
                 switch (whereToGo) {
-                    case 0 :
+                    case 0 : // Left
                         r_before = r_current;
                         r_current--;
                         break;
                     
-                    case 1 :
+                    case 1 : // Right
                         r_before = r_current;
                         r_current++;
                         break;
 
-                    case 2 :
+                    case 2 : // Down
                         c_before = c_current;
                         c_current--;
                         break;
@@ -152,15 +167,15 @@ function make_maze() {
                 switch (whereToGo) {
                     case 0:
                         r_before = r_current;
-                        r_current--;
+                        r_current--; // Left
                         break;
 
-                    case 1:
+                    case 1: // Right
                         r_before = r_current;
                         r_current++;
                         break;
 
-                    case 2:
+                    case 2: // Up
                         c_before = c_current;
                         c_current++;
                         break;
@@ -175,17 +190,17 @@ function make_maze() {
                 whereToGo = Math.floor(Math.random() * numberOfRandom);
 
                 switch (whereToGo) {
-                    case 0 :
+                    case 0 : // Up
                         c_before = c_current;
                         c_current++;
                         break;
 
-                    case 1 :
+                    case 1 : // Down
                         c_before = c_current;
                         c_current--;
                         break;
 
-                    case 2 :
+                    case 2 : // Left
                         r_before = r_current;
                         r_current--;
                         break
@@ -200,17 +215,17 @@ function make_maze() {
                 whereToGo = Math.floor(Math.random() * numberOfRandom);
 
                 switch (whereToGo) {
-                    case 0:
+                    case 0: // Up
                         c_before = c_current;
                         c_current++;
                         break;
 
-                    case 1:
+                    case 1: // Down
                         c_before = c_current;
                         c_current--;
                         break;
 
-                    case 2:
+                    case 2: // Right
                         r_before = r_current;
                         r_current++;
                         break
